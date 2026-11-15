@@ -128,4 +128,30 @@ class ScholarshipCalculatorTest {
     void gpa_manyScores_returnsAverage() {
         assertEquals(2.5, calc.gpa(new double[]{95, 85, 75, 65}), 0.001);
     }
+
+    // ---------- Part D: boundary values from the spec ----------
+    @ParameterizedTest(name = "letterGrade({0}) = {1}")
+    @CsvSource({
+        "0, F",
+        "59.99, F",
+        "60, D",
+        "69.99, D",
+        "89.99, B",
+        "90, A",
+        "100, A"
+    })
+    void letterGrade_boundaries(double score, String expected) {
+        assertEquals(expected, calc.letterGrade(score));
+    }
+
+    // ---------- Part C: loop boundary for gpa ----------
+    @Test
+    void gpa_oneScore_returnsThatGrade() {
+        assertEquals(4.0, calc.gpa(new double[]{95}), 0.001);
+    }
+
+    @Test
+    void gpa_manyScores_returnsAverage() {
+        assertEquals(2.5, calc.gpa(new double[]{95, 85, 75, 65}), 0.001);
+    }
 }
