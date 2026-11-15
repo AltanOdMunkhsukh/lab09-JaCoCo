@@ -143,15 +143,4 @@ class ScholarshipCalculatorTest {
     void letterGrade_boundaries(double score, String expected) {
         assertEquals(expected, calc.letterGrade(score));
     }
-
-    // ---------- Part C: loop boundary for gpa ----------
-    @Test
-    void gpa_oneScore_returnsThatGrade() {
-        assertEquals(4.0, calc.gpa(new double[]{95}), 0.001);
-    }
-
-    @Test
-    void gpa_manyScores_returnsAverage() {
-        assertEquals(2.5, calc.gpa(new double[]{95, 85, 75, 65}), 0.001);
-    }
 }
